@@ -1,0 +1,497 @@
+@keyframes eoGrainShift {
+  0% { background-position: 0px 0px; }
+  10% { background-position: 128px 64px; }
+  20% { background-position: -64px 128px; }
+  30% { background-position: 96px -32px; }
+  40% { background-position: -128px 96px; }
+  50% { background-position: 64px -96px; }
+  60% { background-position: -96px 32px; }
+  70% { background-position: 32px 128px; }
+  80% { background-position: -32px -64px; }
+  90% { background-position: 160px 48px; }
+  100% { background-position: 0px 0px; }
+}
+
+@keyframes eoHeroBreath {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes eoResBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.eo-dish-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 4;
+  background: rgba(201, 168, 76, 0.4);
+  pointer-events: none;
+  transform: translateX(-100%);
+}
+
+.eo-dish-image-inner {
+  will-change: transform;
+}
+
+.eo-main-nav {
+  position: relative;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: background 0.5s ease, backdrop-filter 0.5s ease;
+}
+
+.eo-main-nav.eo-nav-scrolled::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.5px;
+  background: #c9a84c;
+  opacity: 0.35;
+  transform: scaleX(1);
+  transform-origin: left center;
+  animation: eoNavLineDraw 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes eoNavLineDraw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.eo-nav-scroll-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(201, 168, 76, 0.25);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.eo-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.eo-vignette-radial {
+  background: radial-gradient(
+    ellipse 105% 105% at 50% 50%,
+    transparent 35%,
+    rgba(10, 7, 3, 0.5) 70%,
+    rgba(10, 7, 3, 0.88) 100%
+  );
+}
+
+.eo-vignette-top {
+  background: linear-gradient(to bottom, rgba(10, 7, 3, 0.6) 0%, transparent 20%);
+  opacity: 1;
+}
+
+.eo-vignette-dynamic {
+  background: radial-gradient(
+    ellipse 90% 80% at 50% 40%,
+    transparent 30%,
+    rgba(10, 7, 3, 0.35) 100%
+  );
+}
+
+.eo-reservation-success .eo-reservation-grid {
+  opacity: 0.3;
+  transition: opacity 0.8s ease;
+}
+
+.eo-reservation-success .eo-submit-btn {
+  box-shadow: 0 0 40px rgba(201, 168, 76, 0.15);
+}
+
+.eo-footer {
+  overflow: hidden;
+}
+
+[data-magnetic] {
+  will-change: transform;
+}
+
+.eo-nav-scrolled {
+  background: rgba(10, 7, 3, 0.9) !important;
+  backdrop-filter: blur(16px) saturate(1.5) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.5) !important;
+}
+
+.eo-nav-scrolled::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: #c9a84c;
+  opacity: 0.1;
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 0.5s ease;
+}
+
+.eo-nav-link {
+  transition: opacity 0.4s ease, letter-spacing 0.4s ease;
+  letter-spacing: inherit;
+}
+
+.eo-nav-link:hover {
+  letter-spacing: 0.02em;
+}
+
+.eo-nav-link.is-active {
+  opacity: 1 !important;
+}
+
+.eo-nav-link:not(.is-active) {
+  opacity: 0.45;
+}
+
+.eo-nav-link.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: #c9a84c;
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.eo-reservation-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.eo-reservation-section::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 60% at 30% 40%,
+    rgba(201, 168, 76, 0.04) 0%,
+    transparent 55%
+  );
+  animation: eoResBg 20s ease-in-out infinite;
+}
+
+.eo-reservation-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.eo-form-field {
+  position: relative;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.eo-form-field input,
+.eo-form-field select,
+.eo-form-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 1.4rem 0 0.5rem;
+  color: #f5f0e8;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.eo-form-field label {
+  position: absolute;
+  left: 0;
+  top: 1.2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.5);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.eo-form-field input:focus ~ label,
+.eo-form-field input:not(:placeholder-shown) ~ label,
+.eo-form-field select:focus ~ label,
+.eo-form-field select:valid ~ label,
+.eo-form-field textarea:focus ~ label,
+.eo-form-field textarea:not(:placeholder-shown) ~ label {
+  top: -0.2rem;
+  font-size: 9px;
+  color: #c9a84c;
+  letter-spacing: 0.24em;
+  transform: scale(0.82);
+  transform-origin: left top;
+}
+
+.eo-form-field::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #c9a84c;
+  transform-origin: left center;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.eo-form-field:focus-within::after {
+  width: 100%;
+}
+
+.eo-submit-btn {
+  position: relative;
+  overflow: hidden;
+  margin-top: 32px;
+  width: 100%;
+  height: 54px;
+  background: transparent !important;
+  border: 1px solid #c9a84c !important;
+  color: #c9a84c !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  cursor: none;
+  transition: color 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.eo-submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #c9a84c;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.eo-submit-btn:hover::before,
+.eo-submit-btn.eo-submit-hover::before {
+  transform: scaleX(1);
+}
+
+.eo-submit-btn span,
+.eo-submit-btn {
+  position: relative;
+  z-index: 1;
+}
+
+.eo-submit-btn:hover,
+.eo-submit-btn.eo-submit-hover {
+  color: #0a0703 !important;
+}
+
+.eo-press-item {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.eo-press-item:hover {
+  transform: scale(1.018);
+}
+
+.eo-nav-reserve {
+  position: relative;
+  display: inline-block;
+  padding: 6px 0;
+  overflow: hidden;
+}
+
+.eo-nav-reserve::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(201, 168, 76, 0.12);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.eo-nav-reserve:hover::before {
+  transform: scaleX(1);
+}
+
+.eo-menu-row:hover .eo-menu-card .eo-dish-image-inner,
+.eo-menu-card:hover .eo-dish-image-inner {
+  transform: scale(1.04);
+}
+
+.eo-menu-card .eo-dish-image-inner,
+.eo-menu-card > div[style*='position: absolute'] {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.eo-menu-row:hover .dish-name::after {
+  transform: scaleX(1);
+}
+
+.dish-name {
+  position: relative;
+  display: inline-block;
+}
+
+.dish-name::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: #c9a84c;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.eo-submit-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.eo-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: eoDotPulse 1.2s ease-in-out infinite;
+}
+
+.eo-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.eo-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes eoDotPulse {
+  0%, 80%, 100% { opacity: 0.25; transform: scale(0.85); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
+.eo-submit-success-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eo-checkmark {
+  width: 18px;
+  height: 18px;
+}
+
+.eo-checkmark path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: eoCheckDraw 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes eoCheckDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+.eo-form-field-date {
+  position: relative;
+}
+
+.eo-date-constellation {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 48px;
+  height: 24px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background-image:
+    radial-gradient(circle, rgba(201, 168, 76, 0.5) 1px, transparent 1px),
+    radial-gradient(circle, rgba(201, 168, 76, 0.35) 1px, transparent 1px),
+    radial-gradient(circle, rgba(201, 168, 76, 0.4) 1px, transparent 1px);
+  background-size: 100% 100%;
+  background-position: 0 0, 16px 8px, 32px 2px;
+}
+
+.eo-form-field-date:focus-within .eo-date-constellation {
+  opacity: 1;
+}
+
+.eo-reservation-smoke {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.eo-footer-embers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.eo-footer-ember {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.35);
+  box-shadow: 0 0 6px rgba(201, 168, 76, 0.2);
+  will-change: transform;
+}
+
+.eo-footer-logo {
+  cursor: none;
+  transition: color 0.35s ease, letter-spacing 0.35s ease;
+}
+
+.eo-footer-logo:hover {
+  letter-spacing: 0.2em !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eo-film-grain,
+  .eo-hero-breath,
+  .eo-cinematic-loader *,
+  .eo-dish-shimmer {
+    animation: none !important;
+  }
+
+  .eo-reservation-section::before {
+    animation: none !important;
+  }
+
+  * {
+    scroll-behavior: auto !important;
+  }
+}
